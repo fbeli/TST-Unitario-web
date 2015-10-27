@@ -1,0 +1,125 @@
+package br.com.bradseg.siaw.antecipaparcela.util;
+
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import br.com.bradseg.siaw.antecipaparcela.vo.EntradaParcelaVo;
+import br.com.bradseg.siaw.antecipaparcela.vo.RetornoErroVo;
+
+@Service
+@Transactional(propagation = Propagation.NOT_SUPPORTED)
+public class Validacao {
+
+	
+	private static final String CAMPO = " Campo ";
+	private static final String CAMPONAONULO = " não pode ser nulo/n";
+	
+	public RetornoErroVo validarDados(EntradaParcelaVo entradaParcelaVo){
+		
+		RetornoErroVo retornoErroVo = new RetornoErroVo();
+		retornoErroVo.setErro(77);
+		
+		if(null != entradaParcelaVo){
+			retornoErroVo.setMensagemErro(validarNulos(entradaParcelaVo));
+		}else{
+			retornoErroVo.setMensagemErro("Dados não informados.");
+		}		
+		
+		return retornoErroVo;
+	}
+	
+	public String validarNulos(EntradaParcelaVo entradaParcelaVo){		
+		
+		StringBuffer mensagemErro = null;
+
+		if(null == entradaParcelaVo.getSucursal()){			
+			mensagemErro.append(CAMPO + "SUCURSAL" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getRamo()){		 
+			mensagemErro.append(CAMPO + "RAMO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getCia()){		 
+			mensagemErro.append(CAMPO + "CIA" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getApolice()){		 
+			mensagemErro.append(CAMPO + "APOLICE" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getItem()){		 
+			mensagemErro.append(CAMPO + "ITEM" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getEndosso()){		 
+			mensagemErro.append(CAMPO + "ENDOSSO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getNumeroPrestacao()){		 
+			mensagemErro.append(CAMPO + "NUMEROPRESTACAO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getValorParcela()){		 
+			mensagemErro.append(CAMPO + "VALORPARCELA" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getPercentualJuros()){		 
+			mensagemErro.append(CAMPO + "PERCENTUALJUROS" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getValorAdicionalFracionamento()){		 
+			mensagemErro.append(CAMPO + "VALORADICIONALFRACIONAMENTO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getValorIOF()){		 
+			mensagemErro.append(CAMPO + "VALORIOF" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getDataVencimento()){		 
+			mensagemErro.append(CAMPO + "DATAVENCIMENTO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getDataPagamento()){		 
+			mensagemErro.append(CAMPO + "DATAPAGAMENTO" + CAMPONAONULO);
+		}
+		if(null == entradaParcelaVo.getTipoCobranca()){		 
+			mensagemErro.append(CAMPO + "TIPOCOBRANCA" + CAMPONAONULO);
+		}		
+					
+		return mensagemErro.toString();
+	}
+	
+	/**
+	 * 	
+	 * @param data 
+	 * @return
+	 */
+	public boolean isDate(Object data){		
+					
+		if(!(data instanceof Date)){
+			return false;
+		}else{
+			return true;
+		}
+
+	}
+	
+	/*
+	 * TRABALHANDO PARA VERIFICAR FORMATO DE DATA!!!!!
+	 * EXEMPLO DE FORMATO: "YYYY-MM-DDThh:mm:ss"
+	 */
+	
+	public String validarData(Date data, String formato){		
+		
+		String mensagemRetorno = "";
+		SimpleDateFormat formatador = new SimpleDateFormat(formato);		
+		String auxiliarData = formatador.format(data);
+		try {
+			Date novaData =  formatador.parse(auxiliarData);
+		} catch (ParseException e) {
+			mensagemRetorno = "Data inválida. Verificar valor e formato. Formato esperado";
+			e.printStackTrace();
+		}
+		
+		return mensagemRetorno;
+	}
+	
+}

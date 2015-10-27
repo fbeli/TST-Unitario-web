@@ -1,0 +1,81 @@
+package br.com.bradseg.siaw.antecipaparcela.vo;
+
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+public class SaidaParcelaVo implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1952151732212820765L;
+	
+	private BigDecimal valorParcelaCalculado;
+	private BigDecimal valorIOFCalculado;
+	private Date dataVencimentoBoleto;
+	private List<RetornoErroVo> erro = new ArrayList<RetornoErroVo>();
+	
+	public SaidaParcelaVo() {
+		super();
+	}
+
+	/**
+	 * @return valorParcelaCalculado
+	 */
+	public BigDecimal getValorParcelaCalculado() {
+		return valorParcelaCalculado;
+	}
+
+	/**
+	 * @param valorParcelaCalculado BigDecimal
+	 */
+	public void setValorParcelaCalculado(BigDecimal valorParcelaCalculado) {
+		this.valorParcelaCalculado = valorParcelaCalculado;
+	}
+
+	/**
+	 * @return valorIOFCalculado
+	 */
+	public BigDecimal getValorIOFCalculado() {
+		return valorIOFCalculado;
+	}
+
+	/**
+	 * @param valorIOFCalculado BigDecimal
+	 */
+	public void setValorIOFCalculado(BigDecimal valorIOFCalculado) {
+		this.valorIOFCalculado = valorIOFCalculado;
+	}
+
+	/**
+	 * @return dataVencimentoBoleto
+	 */
+	public Date getDataVencimentoBoleto() {
+		return dataVencimentoBoleto;
+	}
+
+	/**
+	 * @param dataVencimentoBoleto Date
+	 */
+	public void setDataVencimentoBoleto(Date dataVencimentoBoleto) {
+		this.dataVencimentoBoleto = dataVencimentoBoleto;
+	}
+
+	/**
+	 * @return erro
+	 */
+	public List<RetornoErroVo> getErro() {
+		return erro;
+	}
+
+	/**
+	 * @param erro List<RetornoErroVo>
+	 */
+	public void setErro(List<RetornoErroVo> erro) {
+		this.erro = erro;
+	}
+	
+}

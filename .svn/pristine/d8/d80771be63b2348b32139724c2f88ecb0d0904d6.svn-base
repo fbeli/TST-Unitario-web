@@ -1,0 +1,154 @@
+
+package br.com.bradseg.siaw.antecipaparcela.webservice.stub;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlSchemaType;
+import javax.xml.bind.annotation.XmlType;
+import javax.xml.datatype.XMLGregorianCalendar;
+
+
+/**
+ * <p>Classe Java de saidaParcelaVo complex type.
+ * 
+ * <p>O seguinte fragmento do esquema especifica o conteúdo esperado contido dentro desta classe.
+ * 
+ * <pre>
+ * &lt;complexType name="saidaParcelaVo">
+ *   &lt;complexContent>
+ *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
+ *       &lt;sequence>
+ *         &lt;element name="dataVencimentoBoleto" type="{http://www.w3.org/2001/XMLSchema}dateTime" minOccurs="0"/>
+ *         &lt;element name="erro" type="{http://webservice.antecipaparcela.siaw.bradseg.com.br/}retornoErroVo" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="valorIOFCalculado" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *         &lt;element name="valorParcelaCalculado" type="{http://www.w3.org/2001/XMLSchema}decimal" minOccurs="0"/>
+ *       &lt;/sequence>
+ *     &lt;/restriction>
+ *   &lt;/complexContent>
+ * &lt;/complexType>
+ * </pre>
+ * 
+ * 
+ */
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(name = "saidaParcelaVo", propOrder = {
+    "dataVencimentoBoleto",
+    "erro",
+    "valorIOFCalculado",
+    "valorParcelaCalculado"
+})
+public class SaidaParcelaVo {
+
+    @XmlSchemaType(name = "dateTime")
+    protected XMLGregorianCalendar dataVencimentoBoleto;
+    @XmlElement(nillable = true)
+    protected List<RetornoErroVo> erro;
+    protected BigDecimal valorIOFCalculado;
+    protected BigDecimal valorParcelaCalculado;
+
+    /**
+     * Obtém o valor da propriedade dataVencimentoBoleto.
+     * 
+     * @return
+     *     possible object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public XMLGregorianCalendar getDataVencimentoBoleto() {
+        return dataVencimentoBoleto;
+    }
+
+    /**
+     * Define o valor da propriedade dataVencimentoBoleto.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link XMLGregorianCalendar }
+     *     
+     */
+    public void setDataVencimentoBoleto(XMLGregorianCalendar value) {
+        this.dataVencimentoBoleto = value;
+    }
+
+    /**
+     * Gets the value of the erro property.
+     * 
+     * <p>
+     * This accessor method returns a reference to the live list,
+     * not a snapshot. Therefore any modification you make to the
+     * returned list will be present inside the JAXB object.
+     * This is why there is not a <CODE>set</CODE> method for the erro property.
+     * 
+     * <p>
+     * For example, to add a new item, do as follows:
+     * <pre>
+     *    getErro().add(newItem);
+     * </pre>
+     * 
+     * 
+     * <p>
+     * Objects of the following type(s) are allowed in the list
+     * {@link RetornoErroVo }
+     * 
+     * 
+     */
+    public List<RetornoErroVo> getErro() {
+        if (erro == null) {
+            erro = new ArrayList<RetornoErroVo>();
+        }
+        return this.erro;
+    }
+
+    /**
+     * Obtém o valor da propriedade valorIOFCalculado.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getValorIOFCalculado() {
+        return valorIOFCalculado;
+    }
+
+    /**
+     * Define o valor da propriedade valorIOFCalculado.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setValorIOFCalculado(BigDecimal value) {
+        this.valorIOFCalculado = value;
+    }
+
+    /**
+     * Obtém o valor da propriedade valorParcelaCalculado.
+     * 
+     * @return
+     *     possible object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public BigDecimal getValorParcelaCalculado() {
+        return valorParcelaCalculado;
+    }
+
+    /**
+     * Define o valor da propriedade valorParcelaCalculado.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link BigDecimal }
+     *     
+     */
+    public void setValorParcelaCalculado(BigDecimal value) {
+        this.valorParcelaCalculado = value;
+    }
+
+}
